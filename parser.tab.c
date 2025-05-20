@@ -73,11 +73,12 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-int yylex();
+int yylex(void);
+
 void yyerror(const char *s);
 
 
-#line 81 "parser.tab.c"
+#line 82 "parser.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -525,9 +526,9 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    29,    29,    30,    34,    35,    36,    37,    41,    47,
-      53,    59,    65,    69,    70,    71,    72,    73,    74,    75,
-      76,    77,    78,    79,    80,    81
+       0,    30,    30,    31,    35,    36,    37,    38,    42,    48,
+      54,    60,    66,    70,    71,    72,    73,    74,    75,    76,
+      77,    78,    79,    80,    81,    82
 };
 #endif
 
@@ -1126,39 +1127,39 @@ yyreduce:
   switch (yyn)
     {
   case 8: /* declaration: INT IDENTIFIER ASSIGN expression SEMICOLON  */
-#line 41 "parser.y"
+#line 42 "parser.y"
                                                {
         printf("Parsed declaration\n");
     }
-#line 1134 "parser.tab.c"
+#line 1135 "parser.tab.c"
     break;
 
   case 9: /* assignment: IDENTIFIER ASSIGN expression SEMICOLON  */
-#line 47 "parser.y"
+#line 48 "parser.y"
                                            {
         printf("Parsed assignment\n");
     }
-#line 1142 "parser.tab.c"
+#line 1143 "parser.tab.c"
     break;
 
   case 10: /* if_stmt: IF LPAREN expression RPAREN block  */
-#line 53 "parser.y"
+#line 54 "parser.y"
                                       {
         printf("Parsed if-statement\n");
     }
-#line 1150 "parser.tab.c"
+#line 1151 "parser.tab.c"
     break;
 
   case 11: /* while_stmt: WHILE LPAREN expression RPAREN block  */
-#line 59 "parser.y"
+#line 60 "parser.y"
                                          {
         printf("Parsed while-loop\n");
     }
-#line 1158 "parser.tab.c"
+#line 1159 "parser.tab.c"
     break;
 
 
-#line 1162 "parser.tab.c"
+#line 1163 "parser.tab.c"
 
       default: break;
     }
@@ -1351,28 +1352,11 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 84 "parser.y"
+#line 85 "parser.y"
 
 
 void yyerror(const char *s) {
     fprintf(stderr, "Error: %s\n", s);
 }
 
-int main() {
-    return yyparse();
-}
 
-int yylex() {
-    int c;
-    while ((c = getchar()) == ' ' || c == '\t' || c == '\n');
-
-    if (isdigit(c)) {
-        yylval.num = c - '0';  // handles single-digit numbers
-        return NUMBER;
-    }
-    if (isalpha(c)) {
-        return IDENTIFIER;
-    }
-
-    return c; // operators and punctuation
-}

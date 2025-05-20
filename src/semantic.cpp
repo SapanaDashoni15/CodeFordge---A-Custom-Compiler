@@ -1,4 +1,4 @@
-// #include "symbol_table.hpp"
+#include "symbol_table.hpp"
 #include <stdexcept>
 
 void SymbolTable::declare(const std::string& name, int value) {

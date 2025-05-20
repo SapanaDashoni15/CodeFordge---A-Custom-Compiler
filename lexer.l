@@ -5,9 +5,6 @@
 
 #include "parser.tab.h" 
 
-
-
-extern int yylval;
 %}
 
 %%
@@ -47,11 +44,11 @@ int yywrap() {
     return 1;
 }
 
-int main(int argc, char **argv) {
-    // Call yylex() repeatedly until EOF
-    while (yylex() != 0) {
-        // Tokens are printed inside lexer rules already
-    }
-    printf("End of input\n");
-    return 0;
-}
+// int main(int argc, char **argv) {
+//     // Call yylex() repeatedly until EOF
+//     while (yylex() != 0) {
+//         // Tokens are printed inside lexer rules already
+//     }
+//     printf("End of input\n");
+//     return 0;
+// }

@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-int yylex();
+int yylex(void);
+
 void yyerror(const char *s);
 
 %}
@@ -87,21 +88,4 @@ void yyerror(const char *s) {
     fprintf(stderr, "Error: %s\n", s);
 }
 
-int main() {
-    return yyparse();
-}
 
-int yylex() {
-    int c;
-    while ((c = getchar()) == ' ' || c == '\t' || c == '\n');
-
-    if (isdigit(c)) {
-        yylval.num = c - '0';  // handles single-digit numbers
-        return NUMBER;
-    }
-    if (isalpha(c)) {
-        return IDENTIFIER;
-    }
-
-    return c; // operators and punctuation
-}
