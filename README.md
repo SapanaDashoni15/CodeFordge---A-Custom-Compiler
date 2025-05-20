@@ -14,15 +14,16 @@ The goal is to incrementally build a fully functional compiler while learning co
 <h3> Prerequisites </h3>
 <br>
 - open your project folder in VS Code and use WSL (Ubuntu) terminal for running commands.
+<br> 
 - Install : flex and bison
 
-<h3?>Build & Run the Lexer (only lexical analysis) </h3>
+<h3>Build & Run the Lexer (only lexical analysis) </h3>
 <br> 
 - flex lexer.l
 - gcc lex.yy.c src/main_lexer.c -o lexer -lfl
 - ./lexer test_input.txt
 
-<h3?> Build & Run the Parser (full syntax analysis) </h3>
+<h3> Build & Run the Parser (full syntax analysis) </h3>
 <br>
 - bison -d parser.y
 - flex lexer.l
@@ -30,7 +31,7 @@ The goal is to incrementally build a fully functional compiler while learning co
 - ./compiler test_input.txt
 
 
-<h3> Contributing <h3> 
+<h3> Contributing </h3> 
 <br>
 contributions are welcome! To contribute to this project, please follow these steps:
 
