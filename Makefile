@@ -1,32 +1,38 @@
-# Compiler and flags
-CXX = g++
-CXXFLAGS = -std=c++17 -Iinclude
+# Compiler and tools
+CC = gcc
+FLEX = flex
+BISON = bison
+
+# Flags (added -Wno-unused-function)
+CFLAGS = -Wall -g -Wno-unused-function
+LDFLAGS = -lfl
 
 # Files
-LEXER = lex.yy.c
-PARSER = parser.tab.c
-PARSER_HEADER = parser.tab.h
+LEXER = lexer.l
+PARSER = parser.y
 
-# Targets
-all: compiler
+LEXER_C = lex.yy.c
+PARSER_C = parser.tab.c
+PARSER_H = parser.tab.h
 
-parser.tab.c parser.tab.h: parser.y
-	bison -d parser.y
+MAIN_LEXER = src/main_lexer.c
+MAIN_PARSER = src/main.c
 
-lex.yy.c: lexer.l
-	flex lexer.l
+all: lexer compiler
 
-semantic.o: src/semantic.cpp include/symbol_table.hpp
-	$(CXX) $(CXXFLAGS) -c src/semantic.cpp -o semantic.o
+lexer: $(LEXER_C) $(MAIN_LEXER)
+	$(CC) $(CFLAGS) lex.yy.c $(MAIN_LEXER) -o lexer $(LDFLAGS)
 
-parser.o: parser.tab.c
-	$(CXX) $(CXXFLAGS) -c parser.tab.c -o parser.o
+compiler: $(PARSER_C) $(PARSER_H) $(LEXER_C) $(MAIN_PARSER)
+	$(CC) $(CFLAGS) parser.tab.c lex.yy.c $(MAIN_PARSER) -o compiler $(LDFLAGS)
 
-lexer.o: lex.yy.c
-	$(CXX) $(CXXFLAGS) -c lex.yy.c -o lexer.o
+$(PARSER_C) $(PARSER_H): $(PARSER)
+	$(BISON) -d $(PARSER)
 
-compiler: parser.o lexer.o semantic.o
-	$(CXX) parser.o lexer.o semantic.o -o compiler -lfl
+$(LEXER_C): $(LEXER)
+	$(FLEX) $(LEXER)
 
 clean:
-	rm -f *.o lex.yy.c parser.tab.* compiler
+	rm -f lexer compiler lex.yy.c parser.tab.c parser.tab.h
+
+.PHONY: all clean lexer compiler
