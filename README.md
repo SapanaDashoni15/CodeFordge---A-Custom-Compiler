@@ -1,3 +1,5 @@
+# CodeFordge 
+
 Welcome to ***CodeForge***, a minimal yet powerful compiler designed for a custom programming language. Built using Flex, Bison, and C.
 
 CodeForge compiles a simplified source language and demonstrates key phases of compilation. It currently supports:
@@ -20,14 +22,19 @@ The goal is to incrementally build a fully functional compiler while learning co
 <h3>Build & Run the Lexer (only lexical analysis) </h3>
 <br> 
 1. flex lexer.l
+
 2. gcc lex.yy.c src/main_lexer.c -o lexer -lfl
+
 3. ./lexer test_input.txt
 
 <h3> Build & Run the Parser (full syntax analysis) </h3>
 <br>
 1. bison -d parser.y
+
 2. flex lexer.l
+
 3. gcc parser.tab.c lex.yy.c src/main.c -o compiler -lfl
+
 4. ./compiler test_input.txt
 
 
