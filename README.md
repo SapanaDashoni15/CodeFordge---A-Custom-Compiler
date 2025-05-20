@@ -19,21 +19,21 @@ The goal is to incrementally build a fully functional compiler while learning co
 
 <h3>Build & Run the Lexer (only lexical analysis) </h3>
 <br> 
-- flex lexer.l
-- gcc lex.yy.c src/main_lexer.c -o lexer -lfl
-- ./lexer test_input.txt
+1. flex lexer.l
+2. gcc lex.yy.c src/main_lexer.c -o lexer -lfl
+3. ./lexer test_input.txt
 
 <h3> Build & Run the Parser (full syntax analysis) </h3>
 <br>
-- bison -d parser.y
-- flex lexer.l
-- gcc parser.tab.c lex.yy.c src/main.c -o compiler -lfl
-- ./compiler test_input.txt
+1. bison -d parser.y
+2. flex lexer.l
+3. gcc parser.tab.c lex.yy.c src/main.c -o compiler -lfl
+4. ./compiler test_input.txt
 
 
 <h3> Contributing </h3> 
 <br>
-contributions are welcome! To contribute to this project, please follow these steps:
+Contributions are welcome! To contribute to this project, please follow these steps:
 
 1. Fork the repository.
 2. Create a new branch (git checkout -b feature-branch-name).
