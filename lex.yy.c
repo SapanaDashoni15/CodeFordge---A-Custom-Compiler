@@ -469,31 +469,11 @@ char *yytext;
 
 #include "parser.tab.h" 
 
-#define INT 1
-#define IF 2
-#define WHILE 3
-#define EQ 4
-#define NE 5
-#define LE 6
-#define GE 7
-#define LT 8
-#define GT 9
-#define ASSIGN 10
-#define PLUS 11
-#define MINUS 12
-#define TIMES 13
-#define DIVIDE 14
-#define LPAREN 15
-#define RPAREN 16
-#define LBRACE 17
-#define RBRACE 18
-#define SEMICOLON 19
-#define NUMBER 20
-#define IDENTIFIER 21
+
 
 extern int yylval;
-#line 496 "lex.yy.c"
-#line 497 "lex.yy.c"
+#line 476 "lex.yy.c"
+#line 477 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -710,9 +690,9 @@ YY_DECL
 		}
 
 	{
-#line 33 "lexer.l"
+#line 13 "lexer.l"
 
-#line 716 "lex.yy.c"
+#line 696 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -771,126 +751,126 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 34 "lexer.l"
+#line 14 "lexer.l"
 { printf("INT\n"); return INT; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 35 "lexer.l"
+#line 15 "lexer.l"
 { printf("IF\n"); return IF; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 36 "lexer.l"
+#line 16 "lexer.l"
 { printf("WHILE\n"); return WHILE; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 38 "lexer.l"
+#line 18 "lexer.l"
 { printf("EQ\n"); return EQ; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 39 "lexer.l"
+#line 19 "lexer.l"
 { printf("NE\n"); return NE; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 40 "lexer.l"
+#line 20 "lexer.l"
 { printf("LE\n"); return LE; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 41 "lexer.l"
+#line 21 "lexer.l"
 { printf("GE\n"); return GE; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 42 "lexer.l"
+#line 22 "lexer.l"
 { printf("LT\n"); return LT; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 43 "lexer.l"
+#line 23 "lexer.l"
 { printf("GT\n"); return GT; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 45 "lexer.l"
+#line 25 "lexer.l"
 { printf("ASSIGN\n"); return ASSIGN; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 46 "lexer.l"
+#line 26 "lexer.l"
 { printf("PLUS\n"); return PLUS; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 47 "lexer.l"
+#line 27 "lexer.l"
 { printf("MINUS\n"); return MINUS; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 48 "lexer.l"
+#line 28 "lexer.l"
 { printf("TIMES\n"); return TIMES; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 49 "lexer.l"
+#line 29 "lexer.l"
 { printf("DIVIDE\n"); return DIVIDE; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 51 "lexer.l"
+#line 31 "lexer.l"
 { printf("LPAREN\n"); return LPAREN; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 52 "lexer.l"
+#line 32 "lexer.l"
 { printf("RPAREN\n"); return RPAREN; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 53 "lexer.l"
+#line 33 "lexer.l"
 { printf("LBRACE\n"); return LBRACE; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 54 "lexer.l"
+#line 34 "lexer.l"
 { printf("RBRACE\n"); return RBRACE; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 55 "lexer.l"
+#line 35 "lexer.l"
 { printf("SEMICOLON\n"); return SEMICOLON; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 57 "lexer.l"
+#line 37 "lexer.l"
 { printf("NUMBER(%s)\n", yytext); return NUMBER; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 58 "lexer.l"
+#line 38 "lexer.l"
 { printf("IDENTIFIER(%s)\n", yytext); return IDENTIFIER; }
 	YY_BREAK
 case 22:
 /* rule 22 can match eol */
 YY_RULE_SETUP
-#line 60 "lexer.l"
+#line 40 "lexer.l"
 ;  // ignore whitespace
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 62 "lexer.l"
+#line 42 "lexer.l"
 { printf("Unknown token: %s\n", yytext); }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 64 "lexer.l"
+#line 44 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 894 "lex.yy.c"
+#line 874 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1895,7 +1875,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 64 "lexer.l"
+#line 44 "lexer.l"
 
 
 int yywrap() {

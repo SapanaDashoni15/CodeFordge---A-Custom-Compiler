@@ -5,27 +5,7 @@
 
 #include "parser.tab.h" 
 
-#define INT 1
-#define IF 2
-#define WHILE 3
-#define EQ 4
-#define NE 5
-#define LE 6
-#define GE 7
-#define LT 8
-#define GT 9
-#define ASSIGN 10
-#define PLUS 11
-#define MINUS 12
-#define TIMES 13
-#define DIVIDE 14
-#define LPAREN 15
-#define RPAREN 16
-#define LBRACE 17
-#define RBRACE 18
-#define SEMICOLON 19
-#define NUMBER 20
-#define IDENTIFIER 21
+
 
 extern int yylval;
 %}

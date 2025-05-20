@@ -1,15 +1,25 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-#include "symbol_table.hpp"
-
-SymbolTable symbols;
+#include <ctype.h>
 
 int yylex();
 void yyerror(const char *s);
+
 %}
 
-%left EQ NE LT LE GT GE
+%union {
+    int num;
+}
+
+%token <num> NUMBER
+%token IDENTIFIER
+%token INT IF WHILE
+%token EQ NE LE GE LT GT
+%token ASSIGN PLUS MINUS TIMES DIVIDE
+%token LPAREN RPAREN LBRACE RBRACE SEMICOLON
+
+%left EQ NE LT GT LE GE
 %left PLUS MINUS
 %left TIMES DIVIDE
 
@@ -35,7 +45,6 @@ declaration:
 
 assignment:
     IDENTIFIER ASSIGN expression SEMICOLON {
-        // Handle variable assignment here
         printf("Parsed assignment\n");
     }
   ;
@@ -57,23 +66,42 @@ block:
   ;
 
 expression:
-    expression PLUS expression
-  | expression MINUS expression
-  | expression TIMES expression
-  | expression DIVIDE expression
-  | expression EQ expression
-  | expression NE expression
-  | expression LT expression
-  | expression GT expression
-  | expression LE expression
-  | expression GE expression
-  | LPAREN expression RPAREN
-  | NUMBER
-  | IDENTIFIER
+      expression PLUS expression
+    | expression MINUS expression
+    | expression TIMES expression
+    | expression DIVIDE expression
+    | expression EQ expression
+    | expression NE expression
+    | expression LT expression
+    | expression GT expression
+    | expression LE expression
+    | expression GE expression
+    | LPAREN expression RPAREN
+    | NUMBER
+    | IDENTIFIER
   ;
 
 %%
 
 void yyerror(const char *s) {
     fprintf(stderr, "Error: %s\n", s);
+}
+
+int main() {
+    return yyparse();
+}
+
+int yylex() {
+    int c;
+    while ((c = getchar()) == ' ' || c == '\t' || c == '\n');
+
+    if (isdigit(c)) {
+        yylval.num = c - '0';  // handles single-digit numbers
+        return NUMBER;
+    }
+    if (isalpha(c)) {
+        return IDENTIFIER;
+    }
+
+    return c; // operators and punctuation
 }
