@@ -12,8 +12,8 @@ Intermediate & Assembly Code Generation (planned in future weeks)
 The goal is to incrementally build a fully functional compiler while learning core concepts of language design and translation.
 
 
-***How to Build & Run***
-<h3> Prerequisites </h3>
+<h3> How to Build & Run </h3>
+*** Prerequisites ***
 <br>
 - open your project folder in VS Code and use WSL (Ubuntu) terminal for running commands.
 <br> 
@@ -21,6 +21,7 @@ The goal is to incrementally build a fully functional compiler while learning co
 
 <h3>Build & Run the Lexer (only lexical analysis) </h3>
 <br> 
+
 1. flex lexer.l
 
 2. gcc lex.yy.c src/main_lexer.c -o lexer -lfl
@@ -29,6 +30,7 @@ The goal is to incrementally build a fully functional compiler while learning co
 
 <h3> Build & Run the Parser (full syntax analysis) </h3>
 <br>
+
 1. bison -d parser.y
 
 2. flex lexer.l
