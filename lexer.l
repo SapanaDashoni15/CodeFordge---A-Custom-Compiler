@@ -1,7 +1,8 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string.h>  
+#include "parser_semantic.tab.h"
 
 #include "parser.tab.h" 
 
@@ -31,12 +32,23 @@
 "}"             { printf("RBRACE\n"); return RBRACE; }
 ";"             { printf("SEMICOLON\n"); return SEMICOLON; }
 
-[0-9]+          { printf("NUMBER(%s)\n", yytext); return NUMBER; }
-[a-zA-Z_][a-zA-Z0-9_]* { printf("IDENTIFIER(%s)\n", yytext); return IDENTIFIER; }
+[0-9]+ {
+    yylval.num = atoi(yytext);     // set value for parser
+    printf("NUMBER(%s)\n", yytext);
+    return NUMBER;
+}
+[a-zA-Z_][a-zA-Z0-9_]* {
+    yylval.str = strdup(yytext);   // set the value for the parser
+    printf("IDENTIFIER(%s)\n", yytext);
+    return IDENTIFIER;
+}
 
 [ \t\n\r]+      ;  // ignore whitespace
 
 .               { printf("Unknown token: %s\n", yytext); }
+
+";"    { printf("SEMICOLON\n"); return SEMICOLON; }
+
 
 %%
 
